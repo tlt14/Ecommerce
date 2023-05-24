@@ -8,7 +8,6 @@ function ThemeProvider({ children }) {
   useEffect(() => {
     function toggleTheme(option) {
       setTheme(option)
-      console.log('theme >>>', theme)
       localStorage.setItem('theme', theme)
       theme === 'light'
         ? document.body.classList.remove('dark')
@@ -16,7 +15,6 @@ function ThemeProvider({ children }) {
     }
     toggleTheme(theme)
   }, [theme])
-  console.log('theme >>>', theme)
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}

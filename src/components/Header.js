@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import './Header.css'
 import { ThemeContext } from '../providers/themeContext'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProfile } from '../features/auth/authRequest'
+import { getProfile, logOut } from '../features/auth/authRequest'
 import { Avatar, Dropdown, Navbar } from 'flowbite-react'
 import { Link } from 'react-router-dom'
 
@@ -28,12 +28,14 @@ function Header(props) {
       </span>
     </label>
   )
-
+  function handleLogout() {
+    dispatch(logOut())
+  }
   return (
     <Navbar
       fluid={true}
       rounded={true}
-      className="!bg-gray-300 dark:!bg-gray-800 sticky top-0 z-50"
+      className="!bg-gray-300 dark:!bg-gray-800 sticky top-0 z-50  "
     >
       <Navbar.Brand href="https://flowbite.com/">
         <img
@@ -60,19 +62,21 @@ function Header(props) {
             }
           >
             <Dropdown.Header>
-              <span className="block text-sm">{user.username}</span>
+              <span className="block text-sm">{user?.username}</span>
               <span className="block truncate text-sm font-medium">
-                {user.email}
+                {user?.email}
               </span>
             </Dropdown.Header>
             <Dropdown.Item>
               <Link to="/my-order">My orders</Link>
             </Dropdown.Item>
-            <Dropdown.Item>Logout</Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
             <Dropdown.Item>{toggleButton}</Dropdown.Item>
           </Dropdown>
         ) : (
-          <Link href="/login">Login</Link>
+          <Link to="/login" className="dark:text-white font-bold ">
+            Login
+          </Link>
         )}
         <Navbar.Toggle />
       </div>

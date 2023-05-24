@@ -46,7 +46,7 @@ export function Cart() {
         Cart Items
       </h1>
       <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
-        <div className="rounded-lg md:w-2/3 max-h-96 overflow-y-scroll scroll-smooth ">
+        <div className="rounded-sm md:w-2/3 max-h-96 overflow-y-scroll scroll-smooth ">
           {loading ? (
             <h1>Loading...</h1>
           ) : error ? (
@@ -62,8 +62,8 @@ export function Cart() {
             ))
           ) : (
             <>
-              <h1 className="text-center dark:text-white">
-                Your cart is empty
+              <h1 className="text-center dark:text-gray-900 border border-sm rounded-sm dark:bg-[#F0EC8B] p-5">
+                Your cart is empty !!!
               </h1>
             </>
           )}

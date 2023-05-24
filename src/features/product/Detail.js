@@ -43,12 +43,12 @@ function Detail(props) {
       <div className="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
         <div className="flex flex-wrap -mx-4">
           <div className="w-full px-4 md:w-1/2 ">
-            <div className="sticky top-0 z-50 overflow-hidden ">
+            <div className="sticky top-0 z-40 overflow-hidden  ">
               <div className="relative mb-6 lg:mb-10 lg:h-2/4 ">
                 <img
                   src={product?.images}
                   alt=""
-                  className="object-cover w-full lg:h-full "
+                  className="object-cover w-full lg:h-full max-h-[500px] rounded-xl"
                 />
               </div>
               {/* <div className="flex-wrap hidden md:flex ">
@@ -179,10 +179,10 @@ function Detail(props) {
                   {product.description}
                 </p>
                 <p className="inline-block  text-4xl font-bold text-gray-700 dark:text-gray-400 ">
-                  <span>${product.price}</span>
-                  <span className="text-base font-normal text-gray-500 line-through dark:text-gray-400">
+                  <span>{product.price.toLocaleString()} vnđ</span>
+                  {/* <span className="text-base font-normal text-gray-500 line-through dark:text-gray-400">
                     $1500.99
-                  </span>
+                  </span> */}
                 </p>
                 {/* <p className="text-green-600 dark:text-green-300 ">
                   7 in stock
