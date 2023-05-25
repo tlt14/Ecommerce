@@ -35,7 +35,7 @@ function CartItem({ item, increaseQuantity, decreaseQuantity, userId }) {
               -{' '}
             </span>
             <input
-              className="h-8 w-8 border bg-white dark:bg-[#403541] dark:text-gray-200 dark:text-white  text-center text-xs outline-none"
+              className="h-8 w-8 border bg-white dark:bg-[#403541] dark:text-white  text-center text-xs outline-none"
               type="text"
               value={item.quantity}
               min={1}

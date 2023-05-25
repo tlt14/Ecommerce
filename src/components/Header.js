@@ -11,7 +11,7 @@ function Header(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     getProfile()(dispatch);
-  }, [dispatch, isAuthenticated]);
+  }, [dispatch]);
   const { theme, setTheme } = useContext(ThemeContext);
   const toggleButton = (
     <label className="switch mr-5">
@@ -23,8 +23,8 @@ function Header(props) {
       <span className="slider"></span>
     </label>
   );
-  async function handleLogout() {
-    await dispatch(logOut());
+  function handleLogout() {
+    dispatch(logOut());
   }
   return (
     <div className="">

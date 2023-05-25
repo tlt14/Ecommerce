@@ -19,7 +19,6 @@ export const login = (data) => async (dispatch) => {
 };
 export const getProfile = () => async (dispatch) => {
   try {
-    dispatch(loginStart());
     const res = await api.get("/profile");
     dispatch(loginSuccess(res.data.user));
   } catch (error) {
