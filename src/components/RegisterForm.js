@@ -4,6 +4,7 @@ import axios from "../utils/axios";
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import logo from "../assets/logo.jpg";
 function RegisterForm(props) {
   const navigate = useNavigate();
 
@@ -42,11 +43,7 @@ function RegisterForm(props) {
           href="#_"
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
         >
-          <img
-            className="w-8 h-8 mr-2"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-            alt="logo"
-          />
+          <img className="w-8 h-8 mr-2" src={logo} alt="logo" />
           Tshoe
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">

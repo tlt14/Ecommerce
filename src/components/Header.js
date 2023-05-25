@@ -14,19 +14,6 @@ function Header(props) {
   }, [dispatch, isAuthenticated]);
   const { theme, setTheme } = useContext(ThemeContext);
   const toggleButton = (
-    // <label className="relative inline-flex items-center cursor-pointer">
-    //   <input
-    //     type="checkbox"
-    //     value=""
-    //     className="sr-only peer"
-    //     onChange={(e) => setTheme(e.target.checked ? "light" : "dark")}
-    //     checked={theme === "light"}
-    //   />
-    //   <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-    //   <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-    //     {theme === "light" ? "Light mode" : "Dark mode"}
-    //   </span>
-    // </label>
     <label className="switch mr-5">
       <input
         type="checkbox"
@@ -68,7 +55,7 @@ function Header(props) {
               label={
                 <Avatar
                   alt="User settings"
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  img="https://scontent.fsgn5-10.fna.fbcdn.net/v/t1.15752-9/346111352_541075654903369_3250665337686196684_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=ae9488&_nc_ohc=H6J-Kwfghv8AX-SPcxH&_nc_ht=scontent.fsgn5-10.fna&oh=03_AdRA0V3bucPYH7w3cYzns45hArUOF35kYh64BkjPImGdPw&oe=64969A39"
                   rounded={true}
                 />
               }
