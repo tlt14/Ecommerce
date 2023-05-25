@@ -1,40 +1,40 @@
-import React, { useEffect, useMemo } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getCart } from '../services/cartService'
-import { toast } from 'react-toastify'
-import { addOrder } from '../services/orderService'
-import { clearCart } from '../features/cart/cartSlice'
+import React, { useEffect, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCart } from "../services/cartService";
+import { toast } from "react-toastify";
+import { addOrder } from "../services/orderService";
+import { clearCart } from "../features/cart/cartSlice";
 
 function CheckOut(props) {
-  const dispatch = useDispatch()
-  const carts = useSelector((state) => state.cart.items)
-  const userId = useSelector((state) => state.auth?.user?._id)
+  const dispatch = useDispatch();
+  const carts = useSelector((state) => state.cart.items);
+  const userId = useSelector((state) => state.auth?.user?._id);
   useEffect(() => {
-    userId && dispatch(getCart(userId))
-  }, [dispatch, userId])
+    userId && dispatch(getCart(userId));
+  }, [dispatch, userId]);
 
   const subTotal = useMemo(() => {
     return carts?.products?.reduce((total, item) => {
-      return total + parseInt(item.productId.price) * parseInt(item.quantity)
-    }, 0)
-  }, [carts])
-  const [address, setAddress] = React.useState('')
-  const [phone, setPhone] = React.useState('')
+      return total + parseInt(item.productId.price) * parseInt(item.quantity);
+    }, 0);
+  }, [carts]);
+  const [address, setAddress] = React.useState("");
+  const [phone, setPhone] = React.useState("");
   async function handlePlaceOrder() {
     const data = {
       userId,
       products: carts.products,
       totalPrice: subTotal + 15000,
       shippingAddress: address,
-    }
-    console.log(data)
+    };
+    console.log(data);
     if (!address || !phone) {
-      return toast.error('Please fill in all fields')
+      return toast.error("Please fill in all fields");
     } else {
       addOrder(data, (res) => {
-        console.log(res)
-        dispatch(clearCart())
-      })
+        console.log(res);
+        dispatch(clearCart());
+      });
     }
   }
   return (
@@ -237,7 +237,7 @@ function CheckOut(props) {
                   Subtotal
                 </p>
                 <p className="font-semibold text-gray-900 dark:text-white">
-                  ${subTotal}
+                  {subTotal || 0} vnđ
                 </p>
               </div>
               <div className="flex items-center justify-between">
@@ -245,7 +245,7 @@ function CheckOut(props) {
                   Shipping
                 </p>
                 <p className="font-semibold text-gray-900 dark:text-white">
-                  15000 vnđ
+                  15,000 vnđ
                 </p>
               </div>
             </div>
@@ -254,7 +254,7 @@ function CheckOut(props) {
                 Total
               </p>
               <p className="text-2xl font-semibold text-gray-900 dark:text-white">
-                {subTotal + 15000} vnđ
+                {(subTotal || 0 + 15000).toLocaleString() || 0} vnđ
               </p>
             </div>
           </div>
@@ -267,7 +267,7 @@ function CheckOut(props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default CheckOut
+export default CheckOut;

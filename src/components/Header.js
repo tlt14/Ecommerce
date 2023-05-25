@@ -23,20 +23,17 @@ function Header(props) {
       <span className="slider"></span>
     </label>
   );
-  function handleLogout() {
-    dispatch(logOut());
+  async function handleLogout() {
+    await dispatch(logOut());
   }
   return (
-    <div className="sticky top-0">
+    <div className="">
       <Navbar
         fluid={true}
         rounded={true}
         style={{
           backgroundColor: theme === "light" ? "white" : "#121212",
           color: theme === "light" ? "black" : "white",
-          zIndex: 100,
-          position: "sticky",
-          top: 0,
         }}
       >
         <Navbar.Brand href="/">
@@ -46,7 +43,7 @@ function Header(props) {
           </span>
         </Navbar.Brand>
 
-        <div className="flex md:order-2">
+        <div className="flex md:order-2 ">
           {toggleButton}
           {isAuthenticated ? (
             <Dropdown

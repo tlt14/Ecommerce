@@ -1,26 +1,26 @@
-import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import api from '../utils/axios'
-import { useSelector } from 'react-redux'
-import OrderDetail from '../components/OrderDetail'
+import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import api from "../utils/axios";
+import { useSelector } from "react-redux";
+import OrderDetail from "../components/OrderDetail";
 
 function OrderHistory() {
-  const [orders, setOrders] = useState([])
-  const userId = useSelector((state) => state.auth?.user?._id)
-  const [toggle, setToggle] = useState(false)
-  const [detail, setDetail] = useState([])
+  const [orders, setOrders] = useState([]);
+  const userId = useSelector((state) => state.auth?.user?._id);
+  const [toggle, setToggle] = useState(false);
+  const [detail, setDetail] = useState([]);
   useEffect(() => {
     userId &&
       api.get(`/orders/${userId}`).then((res) => {
-        setOrders(res.data)
-      })
-  }, [userId])
+        setOrders(res.data);
+      });
+  }, [userId]);
   function handelShowDetail(data) {
-    setDetail(data)
-    setToggle(true)
+    setDetail(data);
+    setToggle(true);
   }
-  console.log('pro details', orders)
+  console.log("pro details", orders);
   return (
     <div className="container mx-auto px-4 min-h-[450px] max-h-[700px] overflow-auto bg-gray-400 p-10 ">
       <h1 className="text-2xl font-bold mb-4">Lịch sử đơn hàng</h1>
@@ -62,7 +62,7 @@ function OrderHistory() {
                     {item.userId.username}
                   </td>
                   <td className="px-6 py-3 bg-gray-50 dark:bg-slate-500 dark:text-white text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {item.totalPrice}
+                    {item.totalPrice.toLocaleString()}
                   </td>
                   <td className="px-6 py-3 bg-gray-50 dark:bg-slate-500 dark:text-white text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     {item.status}
@@ -81,7 +81,7 @@ function OrderHistory() {
                     </div>
                   </td>
                 </tr>
-              )
+              );
             })
           ) : (
             <>Không có đơn hàng</>
@@ -93,7 +93,7 @@ function OrderHistory() {
         tabIndex={-1}
         aria-hidden="true"
         className={`fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-x-1/4 h-[calc(100%-1rem)] md:h-full ${
-          toggle === false && 'hidden'
+          toggle === false && "hidden"
         }`}
       >
         <div className="relative w-full h-full max-w-2xl md:h-auto">
@@ -109,7 +109,7 @@ function OrderHistory() {
                 className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
                 data-modal-hide="defaultModal"
                 onClick={() => {
-                  setToggle(false)
+                  setToggle(false);
                 }}
               >
                 <svg
@@ -162,7 +162,7 @@ function OrderHistory() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default OrderHistory
+export default OrderHistory;

@@ -12,6 +12,7 @@ export const login = (data) => async (dispatch) => {
     dispatch(loginStart());
     const res = await api.post("/login", data);
     dispatch(loginSuccess(res.data.user));
+    toast.success("Login success");
   } catch (error) {
     dispatch(loginFailure(error.message));
   }
