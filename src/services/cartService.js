@@ -27,10 +27,10 @@ export const getCart = (userId) => async (dispatch) => {
 }
 
 // update qty
-export const updateCartItemQuantity = (data) => async (dispatch) => {
+export const updateCartItemQuantity = (userId, data) => async (dispatch) => {
   try {
     // dispatch(setLoading())
-    const res = await api.put(`/carts/63176fd153de342c544db11a/items`, data)
+    const res = await api.put(`/carts/${userId}/items`, data)
     dispatch(setCart(res.data))
   } catch (err) {
     setError(err.message)
@@ -38,11 +38,11 @@ export const updateCartItemQuantity = (data) => async (dispatch) => {
 }
 
 // remove item
-export const removeFromCart = (data) => async (dispatch) => {
-  console.log('removeFromCart', data)
+export const removeFromCart = (userId, data) => async (dispatch) => {
+  // console.log('removeFromCart', data)
   try {
     // dispatch(setLoading())
-    const res = await api.delete(`/carts/63176fd153de342c544db11a/items`, {
+    const res = await api.delete(`/carts/${userId}/items`, {
       data: data,
     })
     dispatch(setCart(res.data))

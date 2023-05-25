@@ -16,11 +16,11 @@ function OrderHistory() {
         setOrders(res.data)
       })
   }, [userId])
-  console.log(orders, userId)
   function handelShowDetail(data) {
     setDetail(data)
     setToggle(true)
   }
+  console.log('pro details', orders)
   return (
     <div className="container mx-auto px-4 min-h-[450px] max-h-[700px] overflow-auto bg-gray-400 p-10 ">
       <h1 className="text-2xl font-bold mb-4">Lịch sử đơn hàng</h1>

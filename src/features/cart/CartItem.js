@@ -2,16 +2,15 @@ import React, { memo } from 'react'
 import { removeFromCart } from '../../services/cartService'
 import { useDispatch } from 'react-redux'
 
-function CartItem({ item, increaseQuantity, decreaseQuantity }) {
+function CartItem({ item, increaseQuantity, decreaseQuantity, userId }) {
   const dispatch = useDispatch()
   async function handleRemoveItem(data) {
-    dispatch(removeFromCart({ productId: data }))
+    if (window.confirm('Are you sure you want to remove this item?')) {
+      dispatch(removeFromCart(userId, { productId: data }))
+    }
   }
   return (
-    <div
-      key={item.productId._id}
-      className="justify-between mb-6 rounded-lg bg-white p-6 dark:bg-[#F0EC8B] shadow-md sm:flex sm:justify-start"
-    >
+    <div className="justify-between mb-6 rounded-lg bg-white p-6 dark:bg-[#F0EC8B] shadow-md sm:flex sm:justify-start">
       <img
         src={item.productId?.images}
         alt={item.productId.name}
@@ -22,7 +21,7 @@ function CartItem({ item, increaseQuantity, decreaseQuantity }) {
           <h2 className="text-lg font-bold text-gray-900 dark:text-[#2B2726]">
             {item.productId.name}
           </h2>
-          <p className="mt-1 text-xs text-gray-700">36EU - 4US</p>
+          <p className="mt-1 text-xs text-gray-700">{item.size}</p>
         </div>
         <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
           <div className="flex items-center border-gray-100">
@@ -36,8 +35,8 @@ function CartItem({ item, increaseQuantity, decreaseQuantity }) {
               -{' '}
             </span>
             <input
-              className="h-8 w-8 border bg-white dark:bg-[#403541] dark:text-gray-200  text-center text-xs outline-none"
-              type="number"
+              className="h-8 w-8 border bg-white dark:bg-[#403541] dark:text-gray-200 dark:text-white  text-center text-xs outline-none"
+              type="text"
               value={item.quantity}
               min={1}
               onChange={(e) => console.log(e.target.value)}
@@ -53,7 +52,9 @@ function CartItem({ item, increaseQuantity, decreaseQuantity }) {
             </span>
           </div>
           <div className="flex items-center space-x-4">
-            <p className="text-xl font-bold">${item.productId.price}</p>
+            <p className="text-xl font-bold">
+              {item.productId?.price?.toLocaleString()}
+            </p>
             <button
               onClick={() => {
                 handleRemoveItem(item.productId._id)

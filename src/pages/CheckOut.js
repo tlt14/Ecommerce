@@ -24,7 +24,7 @@ function CheckOut(props) {
     const data = {
       userId,
       products: carts.products,
-      totalPrice: subTotal + 4.99,
+      totalPrice: subTotal + 15000,
       shippingAddress: address,
     }
     console.log(data)
@@ -245,7 +245,7 @@ function CheckOut(props) {
                   Shipping
                 </p>
                 <p className="font-semibold text-gray-900 dark:text-white">
-                  $4.99
+                  15000 vnđ
                 </p>
               </div>
             </div>
@@ -254,7 +254,7 @@ function CheckOut(props) {
                 Total
               </p>
               <p className="text-2xl font-semibold text-gray-900 dark:text-white">
-                ${subTotal + 4.99}
+                {subTotal + 15000} vnđ
               </p>
             </div>
           </div>

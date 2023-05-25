@@ -179,7 +179,7 @@ function Detail(props) {
                   {product.description}
                 </p>
                 <p className="inline-block  text-4xl font-bold text-gray-700 dark:text-gray-400 ">
-                  <span>{product.price.toLocaleString()} vnđ</span>
+                  <span>{product?.price?.toLocaleString()} vnđ</span>
                   {/* <span className="text-base font-normal text-gray-500 line-through dark:text-gray-400">
                     $1500.99
                   </span> */}

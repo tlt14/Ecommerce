@@ -10,13 +10,13 @@ export function Cart() {
   const { items, loading, error } = useSelector((state) => state.cart)
 
   useEffect(() => {
-    dispatch(getCart(userId))
+    userId && dispatch(getCart(userId))
   }, [dispatch, userId])
 
   const increaseQuantity = useCallback(
     async (productId, quantity) => {
       dispatch(
-        updateCartItemQuantity({ userId, productId, quantity: quantity + 1 }),
+        updateCartItemQuantity(userId, { productId, quantity: quantity + 1 }),
       )
     },
     [dispatch, userId],
@@ -25,7 +25,7 @@ export function Cart() {
   const decreaseQuantity = useCallback(
     async (productId, quantity) => {
       dispatch(
-        updateCartItemQuantity({ userId, productId, quantity: quantity - 1 }),
+        updateCartItemQuantity(userId, { productId, quantity: quantity - 1 }),
       )
     },
     [dispatch, userId],
@@ -46,7 +46,7 @@ export function Cart() {
         Cart Items
       </h1>
       <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
-        <div className="rounded-sm md:w-2/3 max-h-96 overflow-y-scroll scroll-smooth ">
+        <div className="rounded-sm md:w-2/3 max-h-96 overflow-y-auto scroll-smooth ">
           {loading ? (
             <h1>Loading...</h1>
           ) : error ? (
@@ -58,6 +58,7 @@ export function Cart() {
                 item={item}
                 increaseQuantity={increaseQuantity}
                 decreaseQuantity={decreaseQuantity}
+                userId={userId}
               />
             ))
           ) : (
