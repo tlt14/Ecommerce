@@ -1,12 +1,16 @@
+import React,{ Suspense } from "react";
 import Carousel from "../components/Carousel";
-import Newest from "../features/product/Newest";
+import Loading from "../components/Loading";
+const Newest = React.lazy(() => import("../features/product/Newest"));
 
 function Home(props) {
   document.title = "Home";
   return (
     <>
       <Carousel />
-      <Newest />
+      <Suspense fallback={<Loading/>}>
+        <Newest />
+      </Suspense>
     </>
   );
 }

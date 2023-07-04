@@ -48,7 +48,7 @@ export default function Products() {
       </div>
       {/* Tab Menu */}
 
-      <form className="w-4/12 py-2 m-auto" onSubmit={handleSearch}>
+      <form className="md:w-4/12 sm:w-10/12 lg:5/12 py-2 m-auto" onSubmit={handleSearch}>
         <label
           htmlFor="default-search"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"

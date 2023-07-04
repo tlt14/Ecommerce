@@ -43,7 +43,7 @@ function Header(props) {
           </span>
         </Navbar.Brand>
 
-        <div className="flex md:order-2 ">
+        <div className="flex md:order-2 items-center">
           {toggleButton}
           {isAuthenticated ? (
             <Dropdown
@@ -69,7 +69,7 @@ function Header(props) {
               <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
             </Dropdown>
           ) : (
-            <Link to="/login" className="dark:text-white font-bold ">
+            <Link to="/login" className="dark:text-white font-bold flex items-center justify-center">
               Login
             </Link>
           )}

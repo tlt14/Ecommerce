@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../../utils/axios'
-export default function Newest() {
+import { memo } from 'react'
+ function Newest() {
   const [products, setProducts] = useState([])
   useEffect(() => {
     async function fetchNewEst() {
@@ -25,7 +26,7 @@ export default function Newest() {
           {products.map((product) => (
             <Link
               key={product._id}
-              to={`product/${product._id}`}
+              to={`/product/${product._id}`}
               className="group"
             >
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
@@ -48,3 +49,4 @@ export default function Newest() {
     </div>
   )
 }
+export default memo(Newest)

@@ -2,9 +2,9 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer className="dark:bg-gray-900 dark:text-white bg-white text-gray-900  py-8 px-4 container ">
+    <footer className="dark:bg-gray-900 dark:text-white bg-white text-gray-900  py-8 px-4 min-w-full m-auto">
       <hr className="border-gray-200 w-10/12 m-auto p-10" />
-      <div className="w-10/12 mx-auto flex items-center justify-between">
+      <div className="w-10/12 mx-auto flex items-center justify-between flex-wrap">
         <div>
           <h3 className="text-lg font-bold mb-2">Thông tin liên hệ</h3>
           <p className="mb-4">Số 123, đường ABC, Quận XYZ, TP HCM</p>
